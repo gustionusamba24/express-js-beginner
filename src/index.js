@@ -4,6 +4,11 @@ const PORT = 4000;
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  console.log(`${req.method}: ${req.url}`);
+  next();
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const grocertList = [
@@ -28,5 +33,5 @@ app.get("/groceries", (req, res) => {
 app.post("/groceries", (req, res) => {
   console.log(req.body);
   grocertList.push(req.body);
-  res.send(201);
+  res.sendStatus(201);
 });
