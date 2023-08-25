@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-const grocertList = [
+const groceryList = [
   {
     item: "milk",
     qty: 2,
@@ -27,7 +27,13 @@ const grocertList = [
 ];
 
 app.get("/groceries", (req, res) => {
-  res.send(grocertList);
+  res.send(groceryList);
+});
+
+app.get("/groceries/:item", (req, res) => {
+  const { item } = req.params;
+  const groceryItem = groceryList.find((g) => g.item === item);
+  res.send(groceryItem);
 });
 
 app.post("/groceries", (req, res) => {
