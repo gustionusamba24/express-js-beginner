@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const PORT = 4000;
 
-const groceriesRouter = require("./routes/groceries");
+const groceriesRoute = require("./routes/groceries");
+const marketsRoute = require("./routes/markets");
 
 app.use(express.json());
 
@@ -11,6 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/v1/groceries", groceriesRouter);
+app.use("/api/v1/groceries", groceriesRoute);
+app.use("/api/v1/markets", marketsRoute);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
