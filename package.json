@@ -6,8 +6,8 @@
   "author": "Gustio Nusamba",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "start": "node ./src/index.js",
+    "start:dev": "nodemon ./src/index.js"
   },
   "dependencies": {
     "express": "^4.18.2",

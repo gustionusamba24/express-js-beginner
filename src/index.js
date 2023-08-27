@@ -1,14 +1,21 @@
 const express = require("express");
 
+const usersRouter = require("./routes/users");
+
 const app = express();
 const PORT = 4000;
 
+app.use("/users", usersRouter);
+
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.json({
+    nama: "Gustio",
+    email: "sambagans@gmail.com",
+  });
 });
 
 app.post("/", (req, res) => {
-  res.send("Got a POST request");
+  res.send("POST request success");
 });
 
 app.listen(PORT, () => {
