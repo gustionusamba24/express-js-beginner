@@ -22,4 +22,10 @@ const updateUser = (id, body) => {
   return dbPool.execute(SQLQuery);
 };
 
-module.exports = { getAllUsers, createUser, updateUser };
+const deleteUser = (id) => {
+  const SQLQuery = `DELETE FROM users WHERE id = ${id}`;
+
+  return dbPool.execute(SQLQuery);
+};
+
+module.exports = { getAllUsers, createUser, updateUser, deleteUser };

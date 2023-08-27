@@ -56,17 +56,24 @@ const updateUser = async (req, res) => {
   }
 };
 
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
   const { id } = req.params;
-  res.json({
-    message: "DELETE user success",
-    data: {
-      id,
-      name: "Gustio",
-      email: "gustio@gmail.com",
-      address: "Kalasan",
-    },
-  });
+
+  try {
+    await UsersModel.deleteUser(id);
+
+    res.json({
+      message: "DELETE user success",
+      data: {
+        id,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Server Error",
+      serverMessage: error,
+    });
+  }
 };
 
 module.exports = { getAllUsers, createUser, updateUser, deleteUser };
