@@ -29,4 +29,17 @@ const updateUser = (req, res) => {
   });
 };
 
-module.exports = { getAllUsers, createUser, updateUser };
+const deleteUser = (req, res) => {
+  const { id } = req.params;
+  res.json({
+    message: "DELETE user success",
+    data: {
+      id,
+      name: "Gustio",
+      email: "gustio@gmail.com",
+      address: "Kalasan",
+    },
+  });
+};
+
+module.exports = { getAllUsers, createUser, updateUser, deleteUser };
